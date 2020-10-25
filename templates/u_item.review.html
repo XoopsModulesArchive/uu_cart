@@ -1,0 +1,68 @@
+<script type="text/javascript">
+<!--
+function openPreviewWindow(url,name,width,height)
+{
+	var options = "width=" + width + ",height=" + height + "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no";
+	new_window = window.open(url, name, options);
+	window.self.name = "main";
+	new_window.focus();
+}
+function send(f)
+{
+	var n = parseInt(f.gid.value);
+	var m = parseInt(f.purchase.value);
+	var s = parseInt(f.stock.value);
+	if (m <= s) {
+		location.href = "index.php?ucart=carton&amp;item="+n+"&amp;purchase="+m+"&amp;vstock="+s;
+	} else {
+		window.alert("<{php}>echo _UUCART_OVER_ITEMS;<{/php}>");
+		f.purchase.value = 1;
+		return false;
+	}
+	return true;
+}
+//-->
+</script>
+<form name="shopping">
+<table border="0">
+  <tbody>
+    <tr>
+      <td colspan="2" class="comtext"><span style="font-size : 14px;font-weight : bold;"><{$detail.top}></span></td>
+    </tr>
+    <tr>
+      <td style="width : 120px;text-align : center;" class="iteminfo"><{$detail.image}></td>
+      <td style=";text-align : left;margin : 15px;" class="itembody">
+      <br>
+      <span style="font-size : 13px;font-weight : bold;"><{$detail.sub}></span><hr style="color : silver;background-color : black;border : 4px;">
+      <{$detail.no}><br>
+      <{$detail.mprice}><br><br>
+      <{$detail.mstock}><br>
+      <{$detail.purchase}><br><br>
+      <{$detail.postreview}><br>
+      <{$detail.postmail}><br><br>
+      <{$detail.buy_rankimg}><br>
+      <{$detail.reference}><br><{$detail.coolim}><br></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="itemtext"><br><span style="font-size : 14px;font-weight : bold;"><{$detail.revtitle}></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<{$detail.hidden}>
+<{$detail.hidden2}>
+</form>
+<{if $check == "t"}>
+<{foreach from=$result item=dat}>
+<{php}>echo _UCART_ITEM_EVALUATION.' :: ';<{/php}><{$dat.rank}><br>
+<{$dat.exp}><br>
+<div style="text-align:right;"><{$dat.days}></div>
+<{if $dat.admin != ""}>
+<br><{$dat.admin}>
+<{/if}>
+<hr style="color : #ff8000;border-width : 3px;border-style : dotted;">
+<{/foreach}>
+<{else}>
+<{php}>echo '<div style="text-align:left;font-size:13px;">'._UCART_ITEM_0REVIEW.'</div>';<{/php}>
+<{/if}>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>

@@ -1,0 +1,44 @@
+
+<div style="text-align:right;font-size:16px;font-weight:bold;"><{php}>echo _UCART_ORDER_STATUS;<{/php}></div>
+<hr style="border-width:3px;border-style:dashed;border-color:#8080ff;">
+<table cellspacing="1" border="1" style="font-size:12px;border-width:2px;border-style:solid;">
+  <tbody>
+  	<tr class="foot" style="text-align:center;"><th colspan="7"><{$other.cargo}></th>
+  	</tr>
+    <tr class="head" style="text-align:center;">
+      <td><{php}>echo _UCART_ITEM_NAME;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_DIFFERENT;<{/php}></td>
+      <td><{php}>echo _UCART_PRICE_INDEX;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NUM;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_PACKAGES;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_POSTAGE;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_AMOUNT;<{/php}></td>
+    </tr>
+    <{foreach from=$goods item=dat}>
+    <tr class="<{cycle values="even,odd"}>" style="vertical-align:middle;">
+      <td style="text-align:center;"><{$dat.top}></td>
+      <td style="text-align:center;"><{$dat.coolim}></td>
+      <td style="text-align:right;"><{$dat.price}></td>
+      <td style="text-align:right;"><{$dat.buy_user}></td>
+      <td style="text-align:right;"><{$dat.packages}><{php}>echo ' '. _UCART_ITEM_NUMS;<{/php}></td>
+      <td style="text-align:right;"><{$dat.postage}><br><{php}>echo _UCART_ITEM_COOL.' - ';<{/php}><{$dat.cools}><{if $goods.reduce > 0}><{php}>echo _UCART_REDUCE_KORO.' ';<{/php}><{$dat.reduce}><{/if}></td>
+      <td style="text-align:right;font-size:13px;"><{php}>echo _UCART_SUB_TOTAL.' ';<{/php}><{$dat.t1}><br><{php}>echo _UCART_ITEM_POSTAGE.' ';<{/php}><{$dat.t2}></td>
+    </tr>
+    <{/foreach}>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style="text-align:right;font-size:13px;"><{php}>echo _UUCART_TOTAL;<{/php}></td>
+      <td style="text-align:right;font-size:13px;"><{php}>echo _UCART_SUB_TOTAL.' '._UCART_ITEM_YEN;<{/php}><{$other.total1}><br><{php}>echo ''._UCART_POSTAGE_TOTAL.' '._UCART_ITEM_YEN;<{/php}><{$other.total2}><br><{php}>echo _UUCART_TOTAL.' '._UCART_ITEM_YEN;<{/php}><{$other.total}></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p class="itemBody" style="text-align:center;font-size:14px;margin:5px;font-weight:bold;padding:5px;"><{php}>echo _UUCART_USER_INFORMATION;<{/php}></p>
+<div style="margin-left:15px;color:red;"><{$error}></div>
+<{$form2}><{$form}>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

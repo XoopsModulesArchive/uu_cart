@@ -1,0 +1,17 @@
+
+<p style="text-align : center;">
+<table border="0" cellpadding="3" cellspacing="3" style="width : 100%;">
+	<tbody>
+		<tr>
+		<td class="head" colspan="2"><{$title}></td>
+		</tr>
+		<{section name=info loop=$column_title}>
+		<tr>
+			<td class="even" style="width : 35%;text-align:left;vertical-align : middle;"><{$column_title[info]}></td>
+			<td class="odd" style="text-align:left;"><{$data[info]}></td>
+		</tr>
+		<{/section}>
+	</tbody>
+</table>
+</p>
+

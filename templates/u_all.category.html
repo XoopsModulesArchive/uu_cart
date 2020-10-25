@@ -1,0 +1,33 @@
+
+<script type="text/javascript">
+<!--
+function openPreviewWindow(url,name,width,height)
+{
+	var options = "width=" + width + ",height=" + height + "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no";
+	new_window = window.open(url, name, options);
+	window.self.name = "main";
+	new_window.focus();
+}
+//-->
+</script>
+<table border="0">
+  <tbody>
+  <tr>
+	  <td colspan="2" style="background-image:url(<{php}>echo _UCART_BG1_IMG;<{/php}>);background-repeat:repeat-x;font-size : 14px;font-weight : bold;padding:5px;"><{php}>echo _UCART_ALL_CATEGORY;<{/php}></td>
+	  </tr>
+  <{foreach from=$category item=dat}>
+	<tr>
+	  <td style="width:120px;padding:10px;"><{$dat.img}></td>
+	  <td style="vertical-align:middle;padding:10px;"><{php}>echo _UCART_TRIANGLE_IMG;<{/php}> <span style="font-size : 14px;font-weight : bold;"><{$dat.linktop}></span> <{php}>echo _UCART_CATEGORY_CLICK;<{/php}><br>
+	  <hr style="color : #ff8000;border-width : 3px;border-style : dotted;">
+	  <span style="font-size : 12px;font-weight : bold;"><{$dat.sub}></span><br>
+	  <br>
+	  <{$dat.exp}></td>
+	  <tr>
+	  <td colspan="2" style="background-image:url(<{$dat.bg}>);background-repeat:repeat-x;">&nbsp;</td>
+	  </tr>
+	<{/foreach}>
+  </tbody>
+</table>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

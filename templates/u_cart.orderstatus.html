@@ -1,0 +1,34 @@
+
+<div style="text-align:right;font-size:16px;font-weight:bold;"><{php}>echo _UCART_ORDER_STATUS;<{/php}></div>
+<hr style="border-width:3px;border-style:dashed;border-color:#8080ff;">
+<table cellspacing="1" border="1" style="font-size:12px;border-width:2px;border-style:solid;">
+  <tbody>
+    <tr class="head" style="text-align:center;">
+      <td style="text-align:center;"><{php}>echo _UUCART_IMAGES;<{/php}></td>
+      <td><{php}>echo _UCART_CATEGORY ;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NAME;<{/php}></td>
+      <td><{php}>echo _UUCART_PURCH;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_POSTAGE;<{/php}></td>
+    </tr>
+    <{if $other.flg != "null"}>
+    <{foreach from=$goods item=dat}>
+    <tr class="<{cycle values="even,odd"}>" style="vertical-align:middle;">
+      <td><{$dat.itemimg}></td>
+      <td><{$dat.categorytop}></td>
+      <td><{$dat.top}><hr><{$dat.sub}></td>
+      <td style="text-align:right;"><{php}>echo _UCART_ITEM_YEN;<{/php}><{$dat.price}><br><{php}>echo _UCART_ITEM_NUM.' ';<{/php}><{$dat.num}><br>
+      <{php}>echo _UCART_ITEM_AMOUNT.' '._UCART_ITEM_YEN;<{/php}><{$dat.t1}></td>
+      <td style="text-align:right;font-size:13px;"><{$dat.postage}><br><{php}>echo _UCART_ITEM_COOL.' ';<{/php}><{$dat._cool}><br><{$dat.packages}><{php}>echo ' '._UCART_ITEM_NUMS;<{/php}></td>
+    </tr>
+    <{/foreach}>
+    <{else}>
+    <tr>
+      <td colspan="7" style="padding:10px;text-align:center;font-size:13px;"><{$other.mes}></td>
+    </tr>
+    <{/if}>
+  </tbody>
+</table>
+</p>
+<p class="itemBody" style="text-align:center;"></p>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

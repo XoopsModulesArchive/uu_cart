@@ -1,0 +1,65 @@
+
+<script type="text/javascript">
+<!--
+function openPreviewWindow(url,name,width,height)
+{
+	var options = "width=" + width + ",height=" + height + "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no";
+	new_window = window.open(url, name, options);
+	window.self.name = "main";
+	new_window.focus();
+}
+function send(f)
+{
+	var n = parseInt(f.gid.value);
+	var m = parseInt(f.purchase.value);
+	var s = parseInt(f.stock.value);
+	if (m <= s) {
+		location.href = "index.php?ucart=carton&amp;item="+n+"&amp;purchase="+m+"&amp;vstock="+s;
+	} else {
+		window.alert("<{php}>echo _UUCART_OVER_ITEMS;<{/php}>");
+		f.purchase.value = 1;
+		return false;
+	}
+	return true;
+}
+//-->
+</script>
+<table border="0">
+  <tbody>
+	<tr>
+	  <td style="width:120px;padding:10px;"><{$category.img}></td>
+	  <td style="vertical-align:middle;"><span style="font-size : 14px;font-weight : bold;"><{$category.top}></span><br>
+	  <hr style="color : #ff8000;border-width : 3px;border-style : dotted;">
+	  <{$category.sub}><br>
+	  <br>
+	  <{$category.exp}></td>
+	</tr>
+	<tr>
+	  <td colspan="2" style="background-image:url(<{$category.bg}>);background-repeat:repeat-x;margin:5px;padding:5px;font-weight:bold;"><{$category.item_title}></td>
+	</tr>
+	<{if $goods == "none"}>
+	<tr>
+	  <td style="text-align:center;padding:10px;" colspan="2"><{php}>echo _UCART_ITEM_NONE;<{/php}></td>
+	</tr>
+	<{else}>
+	<{foreach from=$goods item=dat}>
+	<tr>
+	  <td style="text-align:center;padding:10px;"><{$dat.no}><br><{$dat.itemimg}><br><{$dat.othermain}><br><{$dat.zoom}></td>
+	  <td style="text-align:left;padding:10px;"><form name="<{$dat.formname}>">
+	<span style="font-size : 13px;font-weight : bold;"><{$dat.mainlink}></span><hr style="color : #800080;border-width : 3px;border-style : double;">
+	  <{$dat.sub}><br>
+	  <br>
+	  <{$dat.mstock}><br>
+	  <{$dat.mprice}><br>
+	  <{$dat.purchase}><br>
+	  <{$dat.coolim}><{$dat.hidden}><{$dat.hidden2}></form></td>
+	</tr>
+	<{/foreach}>
+	<{/if}>
+	<tr>
+	  <td colspan="2" style="text-align:center;"><{$category.page}></td>
+	</tr>
+  </tbody>
+</table>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

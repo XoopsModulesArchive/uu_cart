@@ -1,0 +1,88 @@
+
+<script type="text/javascript">
+<!--
+function openPreviewWindow(url,name,width,height)
+{
+	var options = "width=" + width + ",height=" + height + "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no";
+	new_window = window.open(url, name, options);
+	window.self.name = "main";
+	new_window.focus();
+}
+function add_city()
+{
+	var txt = document.buyuser.address.value;
+	var str = document.buyuser.s_citys.value;
+	if (str == "--") {
+		alert("選択されていません。");
+	} else {
+		txt = txt + str;
+	}
+	document.buyuser.address.value = txt;
+	document.buyuser.address.focus();
+}
+function add_town()
+{
+	var txt = document.buyuser.address.value;
+	var str = document.buyuser.s_towns.value;
+	if (str == "--") {
+		alert("選択されていません。");
+	} else {
+		txt = txt + str;
+	}
+	document.buyuser.address.value = txt;
+	document.buyuser.address.focus();
+}
+function add_zips()
+{
+	var str = document.buyuser.s_zips.value;
+	document.buyuser.zip.value = str;
+	document.buyuser.s_zips.focus();
+}
+//-->
+</script>
+
+<p style="text-align:center;"><{$other.course}><br>
+<br>
+<span style="font-size:12px;color:#ff0080;"><{php}>echo _UUCART_USE_COOKIE;<{/php}></span></p>
+<{$other.map}>
+<table cellspacing="1" border="1" style="font-size:12px;border-width:2px;border-style:solid;">
+  <tbody>
+    <tr class="head" style="text-align:center;">
+      <td><{php}>echo _UCART_ITEM;<{/php}></td>
+      <td><{php}>echo _UCART_CATEGORY ;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NAME;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_DIFFERENT;<{/php}></td>
+      <td><{php}>echo _UCART_PRICE_INDEX;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NUM;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_AMOUNT;<{/php}></td>
+    </tr>
+    <{foreach from=$goods item=dat}>
+    <tr class="<{cycle values="even,odd"}>" style="vertical-align:middle;">
+      <td><{$dat.no}></td>
+      <td><{$dat.categorytop}></td>
+      <td><{$dat.top}></td>
+      <td style="text-align:center;"><{$dat.coolim}></td>
+      <td style="text-align:right;"><{$dat.price}></td>
+      <td style="text-align:right;"><{$dat.buy_user}></td>
+      <td style="text-align:right;font-size:13px;"><{$dat.linetotal}></td>
+    </tr>
+    <{/foreach}>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style="text-align:right;font-size:13px;"><{php}>echo _UCART_SUB_TOTAL;<{/php}></td>
+      <td style="text-align:right;font-size:13px;"><{$other.sub_total}></td>
+    </tr>
+  </tbody>
+</table>
+</p>
+<p class="itemBody" style="text-align:center;font-size:14px;margin:5px;font-weight:bold;"><{php}>echo _UUCART_USER;<{/php}></p>
+<div style="margin-left:15px;color:red;"><{$error}></div>
+<{$form}>
+<p class="itemBody" style="text-align:center;"><{$other.fax}></p>
+
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

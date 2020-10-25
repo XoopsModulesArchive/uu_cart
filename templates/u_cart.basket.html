@@ -1,0 +1,113 @@
+
+<script type="text/javascript">
+<!--
+function openPreviewWindow(url,name,width,height)
+{
+	var options = "width=" + width + ",height=" + height + "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no";
+	new_window = window.open(url, name, options);
+	window.self.name = "main";
+	new_window.focus();
+}
+function sendedit(f)
+{
+	var n = parseInt(f.gid.value);
+	var m = parseInt(f.stock.value);
+	var v = parseInt(f.buy_user.value);
+	var s = parseInt(f.editstock.value);
+	var str = f.bid.value;
+	if (s <= m+v) {
+		location.href = "index.php?ucart=cartedit&amp;item="+n+"&amp;ses="+str+"&amp;v="+v+"&amp;s="+s;
+		return true;
+	} else {
+		window.alert("<{php}>echo _UUCART_OVER_ITEMS;<{/php}>");
+		f.stock.value = v;
+		return false;
+	}
+}
+
+function senddelete(f)
+{
+	var n = parseInt(f.gid.value);
+	var s = f.bid.value;
+	var str = "<{php}>echo _UUCART_CONFIRM_LINE;<{/php}>";
+	if (confirm(str)) {
+		location.href = "index.php?ucart=cartdelline&amp;item="+n+"&amp;ses="+s;
+		return true;
+	} else {
+		f.editstock.focus();
+		return false;
+	}
+}
+function send(f)
+{
+	var str = "<{php}>echo _UUCART_CONFIRM_DEL;<{/php}>";
+	if (confirm(str)) {
+		f.submit();
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function sendok(f)
+{
+	f.submit();
+}
+//-->
+</script>
+
+<div style="text-align:right;font-size:16px;font-weight:bold;"><{php}>echo _UCART_B;<{/php}></div>
+<hr style="border-width:3px;border-style:dashed;border-color:#8080ff;">
+<p style="text-align:center;font-size:13px;"><{php}>echo _UUCART_BASKET_VIEW;<{/php}><br>
+<span style="font-size:12px;color:#ff0080;"><{php}>echo _UUCART_USE_COOKIE;<{/php}></span></p>
+<table cellspacing="1" border="1" style="font-size:12px;border-width:2px;border-style:solid;">
+  <tbody>
+    <tr class="head" style="text-align:center;">
+      <td><{php}>echo _UUCART_IMAGES;<{/php}></td>
+      <td><{php}>echo _UCART_CATEGORY ;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NAME;<{/php}></td>
+      <td><{php}>echo _UCART_PRICE_INDEX;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_NUM;<{/php}></td>
+      <td><{php}>echo _UCART_ITEM_AMOUNT;<{/php}></td>
+    </tr>
+    <{if $goods.flg != "null"}>
+    <{foreach from=$goods item=dat}>
+    <tr class="<{cycle values="even,odd"}>" style="vertical-align:middle;">
+      <td><{$dat.itemimg}></td>
+      <td><{$dat.categorytop}></td>
+      <td><{$dat.top}></td>
+      <td style="text-align:right;"><{$dat.price}></td>
+      <td style="text-align:center;"><form style="text-align:center;vertical-align:middle;" name="<{$dat.formname}>"><input size="5" type="text" name="editstock" value="<{$dat.buy_user}>"> <{$dat.purchase}> <{$dat.deletekine}><{$dat.hidden}><{$dat.hidden1}><{$dat.hidden2}><{$dat.hidden3}></form></td>
+      <td style="text-align:right;font-size:13px;"><{$dat.linetotal}></td>
+    </tr>
+    <{/foreach}>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style="text-align:right;font-size:13px;"><{php}>echo _UCART_SUB_TOTAL;<{/php}></td>
+      <td style="text-align:right;font-size:13px;"><{$other.sub_total}></td>
+    </tr>
+    <{else}>
+    <tr>
+      <td colspan="7" style="padding:10px;text-align:center;font-size:13px;"><{$goods.mes}></td>
+    </tr>
+    <{/if}>
+  </tbody>
+</table>
+</p>
+<p class="itemBody" style="text-align:center;">
+<{if $goods.flg != "null"}>
+<{$other.delete_basket}>
+<{$other.continue_uu}>
+<{$other.fax}>
+<{/if}>
+<{php}>echo '<a href="'.$_SERVER['SCRIPT_NAME'].'">'._UCART_CONTINUE_IMG.'</a>';<{/php}><br>
+</p>
+<p style="margin-left:30px;margin-bottom:5px;text-align:left;"><{php}>echo _UUCART_ABOUT_STOCK;<{/php}></p>
+<div style="margin-left:30px;margin-bottom:5px;text-align:left;"><{php}>echo _UCART_DEL_IMG._UUCART_ABOUT_DEL;<{/php}></div>
+<div style="margin-left:30px;margin-bottom:5px;text-align:left;"><{php}>echo _UCART_MOD_IMG._UUCART_ABOUT_MOD;<{/php}></div>
+<div style="margin-left:30px;margin-bottom:5px;text-align:left;"><{php}>echo _UCART_CLEAR_IMG._UUCART_ABOUT_CLE;<{/php}></div>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+

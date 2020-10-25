@@ -1,0 +1,15 @@
+
+<table cellspacing="0">
+  <tr>
+    <td id="mainmenu">
+      <a class="menuTop" href="<{$block.url}>"><{$block.title}></a>
+      <!-- start category loop -->
+      <{foreach item=category from=$block.categorys}>
+      <a class="menuMain" href="<{$category._url}>"><{$block.arrow}><{$category.top}></a>
+      <{/foreach}>
+      <!-- end category loop -->
+    </td>
+  </tr>
+</table>
+<{php}>echo '<div style="text-align:center;font-size:11px;">'.UUCART_AUTHOR.'</div>';<{/php}>
+
